@@ -3,6 +3,8 @@ package org.elasticsearch.analysis;
 import junit.framework.TestCase;
 import org.apache.lucene.analysis.Tokenizer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -15,8 +17,9 @@ import java.util.List;
  * @author 최일규
  * @since 2016-02-11
  */
-public class JasoTokenizerTest extends TestCase {
+public class JasoTokenizerTest {
 
+    @Test
     public void testTokenizer() throws IOException {
 
         long start = System.currentTimeMillis();
@@ -88,7 +91,7 @@ public class JasoTokenizerTest extends TestCase {
                 sb.append(termAtt.toString());
             }
 
-            TestCase.assertEquals(vo.getCompare(), sb.toString());
+            Assert.assertEquals(vo.getCompare(), sb.toString());
             tokenizer.close();
 
             System.out.println(String.format("%s => %s", vo.getOrigin(), sb.toString()));
